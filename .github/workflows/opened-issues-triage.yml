@@ -7,16 +7,16 @@
 # To get a newer version, you will need to update the SHA.
 # You can also reference a tag or branch, but the action may change without warning.
 
-name: Add a new GitHub Project card linked to a GitHub issue to the specified project column
+name: Add a new GitHub issue to the specified project column
 on: [issues, pull_request]
 jobs:
-  github-actions-automate-projects:
+  add-new-issues-to-project-column:
     runs-on: ubuntu-latest
     steps:
-    - name: add-new-issues-to-repository-based-project-column
+    - name: add-new-issues-to-organization-based-project-column
       uses: docker://takanabe/github-actions-automate-projects:v0.0.1
       if: github.event_name == 'issues' && github.event.action == 'opened'
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_PROJECT_URL: https://github.com/orgs/cisagov/projects/27
-        GITHUB_PROJECT_COLUMN_NAME: Triage
+        GITHUB_TOKEN: ${{ secrets.tempTest }}
+        GITHUB_PROJECT_URL: https://github.com/users/taeganw/projects/1
+        GITHUB_PROJECT_COLUMN_NAME: To Do
